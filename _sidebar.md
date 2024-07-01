@@ -1,2 +1,2 @@
-- [Read Me](README)
-- [Example Second Page](second-page)
+- [API接口](https://api.hapuren.cn)
+- [个人小站](https://www.hapuren.cn)
