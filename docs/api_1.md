@@ -207,7 +207,7 @@ int main() {
 }
 ```
 ### C++
-```cpp
+```c++
 #include <iostream>
 #include <fstream>
 #include <curl/curl.h>
