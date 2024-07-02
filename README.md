@@ -8,3 +8,7 @@
 * 二次元图片API接口:[电脑版](./docs/api_2.md)
 ## 结语
 正在努力更新中.jpg
+
+<center>
+  <a href="https://beian.miit.gov.cn/#">豫ICP备2023018730号-1</a>
+</center>
