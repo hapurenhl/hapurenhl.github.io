@@ -15,7 +15,7 @@
 
 ## 三.示例
 ### HTML
-```
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,13 +29,13 @@
 </html>
 ```
 ### PHP
-```
+```php
 <?php
 echo '<img src="https://www.hapuren.luoyekj.cn/api/?id=1">';
 ?>
 ```
 ### PYTHON
-```
+```python
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
@@ -52,7 +52,7 @@ img = Image.open(BytesIOObj)
 img.show()
 ```
 ### JAVA
-```
+```java
 import java.awt.*;
 import java.io.IOException;
 import java.io.InputStream;
@@ -93,7 +93,7 @@ public class WebImageDisplay extends JFrame {
 }
 ```
 ### GO
-```
+```go
 package main
 
 import (
@@ -131,7 +131,7 @@ func main() {
 }
 ```
 ### C
-```
+```c
 #include <stdio.h>
 #include <curl/curl.h>
 #include <SDL2/SDL.h>
@@ -207,7 +207,7 @@ int main() {
 }
 ```
 ### C++
-```
+```c++
 #include <iostream>
 #include <fstream>
 #include <curl/curl.h>
