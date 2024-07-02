@@ -1,1 +1,276 @@
-# ¶ş´ÎÔªÍ¼Æ¬£¨µçÄÔ°æ£©API½Ó¿ÚÎÄµµ***## Ò».½Ó¿Ú`https://api.hapuren.cn/api/?id=2`---## ¶ş.ËµÃ÷´Ë½Ó¿ÚÎª×Ô¶¯×ªÌøµ½jpgÍ¼Æ¬£¬ÓÉÓÚÍ¼Æ¬¾ùÎª4k AI¼ÓÇ¿»­ÖÊ£¬ËùÒÔ»áÓĞ¿¨¶Ù¡£---## Èı.Ê¾Àı### HTML```html<!DOCTYPE html><html><head><meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><title>¶ş´ÎÔªÍ¼Æ¬£¨µçÄÔ°æ£©</title></head><body><h1>¶ş´ÎÔªÍ¼Æ¬£¨µçÄÔ°æ£©</h1><img src="https://www.hapuren.luoyekj.cn/api/?id=2"></body></html>```### PHP```php<?phpecho '<img src="https://www.hapuren.luoyekj.cn/api/?id=2">';?>```### PYTHON```python#!/usr/bin/python3# -*- coding: utf-8 -*-import requestsfrom PIL import Imagefrom io import BytesIOresponse = requests.get('https://www.hapuren.luoyekj.cn/api/?id=2')response = response.contentBytesIOObj = BytesIO()BytesIOObj.write(response)img = Image.open(BytesIOObj)img.show()```### JAVA```javaimport java.awt.*;import java.io.IOException;import java.io.InputStream;import java.net.URL;import javax.imageio.ImageIO;import javax.swing.*;public class WebImageDisplay extends JFrame {    private JLabel imageLabel;        public WebImageDisplay() {        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);        setTitle("Web Image Display");        setSize(400, 400);                imageLabel = new JLabel();        imageLabel.setHorizontalAlignment(SwingConstants.CENTER);        add(imageLabel);    }        public void displayImage(String imageUrl) {        try {            URL url = new URL(imageUrl);            InputStream is = url.openStream();            Image image = ImageIO.read(is);            ImageIcon icon = new ImageIcon(image);            imageLabel.setIcon(icon);        } catch (IOException e) {            e.printStackTrace();        }    }        public static void main(String[] args) {        WebImageDisplay imageDisplay = new WebImageDisplay();        imageDisplay.displayImage("https://www.hapuren.luoyekj.cn/api/?id=2");        imageDisplay.setVisible(true);    }}```### GO```gopackage mainimport (	"fmt"	"image"	"image/jpeg"	_ "image/png"	"log"	"net/http"	"os")func main() {	response, err := http.Get("https://www.hapuren.luoyekj.cn/api/?id=2")	if err != nil {		log.Fatal(err)	}	defer response.Body.Close()	img, _, err := image.Decode(response.Body)	if err != nil {		log.Fatal(err)	}	file, err := os.Create("image.jpg")	if err != nil {		log.Fatal(err)	}	defer file.Close()	jpeg.Encode(file, img, nil)	fmt.Println("Image downloaded successfully!")}```### C```c#include <stdio.h>#include <curl/curl.h>#include <SDL2/SDL.h>// »Øµ÷º¯ÊıĞ´ÈëÍ¼Æ¬Êı¾İµ½ÎÄ¼şÖĞsize_t write_image_data(void* ptr, size_t size, size_t nmemb, FILE* stream) {    return fwrite(ptr, size, nmemb, stream);}int main() {    // ³õÊ¼»¯libcurl    curl_global_init(CURL_GLOBAL_DEFAULT);    CURL* curl = curl_easy_init();    if (!curl) {        fprintf(stderr, "Failed to initialize libcurl\n");        return 1;    }        // ÉèÖÃÒªÏÂÔØµÄÍ¼Æ¬URL    const char* url = "https://www.hapuren.luoyekj.cn/api/?id=2";        // ´ò¿ªÎÄ¼şÒÔĞ´ÈëÍ¼Æ¬Êı¾İ    FILE* file = fopen("image.jpg", "wb");    if (!file) {        fprintf(stderr, "Failed to open file\n");        return 1;    }        // ÅäÖÃlibcurlÇëÇó    curl_easy_setopt(curl, CURLOPT_URL, url);    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_image_data);    curl_easy_setopt(curl, CURLOPT_WRITEDATA, file);        // ·¢ËÍÇëÇó²¢½ÓÊÕÏìÓ¦    CURLcode res = curl_easy_perform(curl);    if (res != CURLE_OK) {        fprintf(stderr, "Failed to download image: %s\n", curl_easy_strerror(res));        return 1;    }        // ¹Ø±ÕÎÄ¼ş    fclose(file);        // ÇåÀíºÍÊÍ·Å×ÊÔ´    curl_easy_cleanup(curl);    curl_global_cleanup();        // Ê¹ÓÃÍ¼ĞÎ¿â¼ÓÔØºÍÏÔÊ¾Í¼Ïñ    SDL_Init(SDL_INIT_VIDEO);    SDL_Window* window = SDL_CreateWindow("Image Display", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 800, 600, 0);    SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, 0);    SDL_Surface* image = SDL_LoadBMP("image.jpg");    SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, image);    SDL_RenderCopy(renderer, texture, NULL, NULL);    SDL_RenderPresent(renderer);        // µÈ´ıÓÃ»§ÍË³ö³ÌĞò    SDL_Event event;    while (SDL_WaitEvent(&event)) {        if (event.type == SDL_QUIT) {            break;        }    }        // ÇåÀíºÍÊÍ·Å×ÊÔ´    SDL_DestroyTexture(texture);    SDL_FreeSurface(image);    SDL_DestroyRenderer(renderer);    SDL_DestroyWindow(window);    SDL_Quit();        return 0;}```### C++```c++#include <iostream>#include <fstream>#include <curl/curl.h>#include <opencv2/opencv.hpp>size_t write_image_data(void* ptr, size_t size, size_t nmemb, FILE* stream) {    return fwrite(ptr, size, nmemb, stream);}int main() {    // ³õÊ¼»¯libcurl    curl_global_init(CURL_GLOBAL_DEFAULT);    CURL* curl = curl_easy_init();    if (!curl) {        std::cerr << "Failed to initialize libcurl" << std::endl;        return 1;    }        // ÉèÖÃÒªÏÂÔØµÄÍ¼Æ¬URL    const char* url = "https://www.hapuren.luoyekj.cn/api/?id=2";        // ´ò¿ªÎÄ¼şÒÔĞ´ÈëÍ¼Æ¬Êı¾İ    FILE* file = fopen("image.jpg", "wb");    if (!file) {        std::cerr << "Failed to open file" << std::endl;        return 1;    }        // ÅäÖÃlibcurlÇëÇó    curl_easy_setopt(curl, CURLOPT_URL, url);    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_image_data);    curl_easy_setopt(curl, CURLOPT_WRITEDATA, file);        // ·¢ËÍÇëÇó²¢½ÓÊÕÏìÓ¦    CURLcode res = curl_easy_perform(curl);    if (res != CURLE_OK) {        std::cerr << "Failed to download image: " << curl_easy_strerror(res) << std::endl;        return 1;    }        // ¹Ø±ÕÎÄ¼ş    fclose(file);        // ÇåÀíºÍÊÍ·Å×ÊÔ´    curl_easy_cleanup(curl);    curl_global_cleanup();        // Ê¹ÓÃOpenCV¼ÓÔØºÍÏÔÊ¾Í¼Ïñ    cv::Mat image = cv::imread("image.jpg");    if (image.empty()) {        std::cerr << "Failed to load image" << std::endl;        return 1;    }        cv::namedWindow("Image Display", cv::WINDOW_NORMAL);    cv::imshow("Image Display", image);    cv::waitKey(0);        return 0;}```##  ÌáĞÑ* ±¾½Ó¿ÚÒÑ¿ªÔ´* ±¾½Ó¿ÚÊÊÓÃÓÚCC BY-NC-ND 4.0 Ğ­Òé ºÍ GPĞ­Òé* ±¾½Ó¿ÚÌá¹©ÊÇPHPËæ»úÊı£¬¿ÉÄÜÓĞÖØ¸´£¡* ÇëºÏÀíÊ¹ÓÃ½Ó¿Ú
+# äºŒæ¬¡å…ƒå›¾ç‰‡ï¼ˆç”µè„‘ç‰ˆï¼‰APIæ¥å£æ–‡æ¡£
+
+***
+
+## ä¸€.æ¥å£
+
+`https://api.hapuren.cn/api/?id=2`
+
+---
+
+## äºŒ.è¯´æ˜
+æ­¤æ¥å£ä¸ºè‡ªåŠ¨è½¬è·³åˆ°jpgå›¾ç‰‡ï¼Œç”±äºå›¾ç‰‡å‡ä¸º4k AIåŠ å¼ºç”»è´¨ï¼Œæ‰€ä»¥ä¼šæœ‰å¡é¡¿ã€‚
+
+---
+
+## ä¸‰.ç¤ºä¾‹
+### HTML
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>äºŒæ¬¡å…ƒå›¾ç‰‡ï¼ˆç”µè„‘ç‰ˆï¼‰</title>
+</head>
+<body>
+<h1>äºŒæ¬¡å…ƒå›¾ç‰‡ï¼ˆç”µè„‘ç‰ˆï¼‰</h1>
+<img src="https://www.hapuren.luoyekj.cn/api/?id=2">
+</body>
+</html>
+```
+### PHP
+```php
+<?php
+echo '<img src="https://www.hapuren.luoyekj.cn/api/?id=2">';
+?>
+```
+### PYTHON
+```python
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+
+import requests
+from PIL import Image
+from io import BytesIO
+
+response = requests.get('https://www.hapuren.luoyekj.cn/api/?id=2')
+response = response.content
+
+BytesIOObj = BytesIO()
+BytesIOObj.write(response)
+img = Image.open(BytesIOObj)
+img.show()
+```
+### JAVA
+```java
+import java.awt.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import javax.imageio.ImageIO;
+import javax.swing.*;
+
+public class WebImageDisplay extends JFrame {
+    private JLabel imageLabel;
+    
+    public WebImageDisplay() {
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("Web Image Display");
+        setSize(400, 400);
+        
+        imageLabel = new JLabel();
+        imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        add(imageLabel);
+    }
+    
+    public void displayImage(String imageUrl) {
+        try {
+            URL url = new URL(imageUrl);
+            InputStream is = url.openStream();
+            Image image = ImageIO.read(is);
+            ImageIcon icon = new ImageIcon(image);
+            imageLabel.setIcon(icon);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public static void main(String[] args) {
+        WebImageDisplay imageDisplay = new WebImageDisplay();
+        imageDisplay.displayImage("https://www.hapuren.luoyekj.cn/api/?id=2");
+        imageDisplay.setVisible(true);
+    }
+}
+```
+### GO
+```go
+package main
+
+import (
+	"fmt"
+	"image"
+	"image/jpeg"
+	_ "image/png"
+	"log"
+	"net/http"
+	"os"
+)
+
+func main() {
+	response, err := http.Get("https://www.hapuren.luoyekj.cn/api/?id=2")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	defer response.Body.Close()
+
+	img, _, err := image.Decode(response.Body)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	file, err := os.Create("image.jpg")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer file.Close()
+
+	jpeg.Encode(file, img, nil)
+
+	fmt.Println("Image downloaded successfully!")
+}
+```
+### C
+```c
+#include <stdio.h>
+#include <curl/curl.h>
+#include <SDL2/SDL.h>
+
+// å›è°ƒå‡½æ•°å†™å…¥å›¾ç‰‡æ•°æ®åˆ°æ–‡ä»¶ä¸­
+size_t write_image_data(void* ptr, size_t size, size_t nmemb, FILE* stream) {
+    return fwrite(ptr, size, nmemb, stream);
+}
+
+int main() {
+    // åˆå§‹åŒ–libcurl
+    curl_global_init(CURL_GLOBAL_DEFAULT);
+    CURL* curl = curl_easy_init();
+    if (!curl) {
+        fprintf(stderr, "Failed to initialize libcurl\n");
+        return 1;
+    }
+    
+    // è®¾ç½®è¦ä¸‹è½½çš„å›¾ç‰‡URL
+    const char* url = "https://www.hapuren.luoyekj.cn/api/?id=2";
+    
+    // æ‰“å¼€æ–‡ä»¶ä»¥å†™å…¥å›¾ç‰‡æ•°æ®
+    FILE* file = fopen("image.jpg", "wb");
+    if (!file) {
+        fprintf(stderr, "Failed to open file\n");
+        return 1;
+    }
+    
+    // é…ç½®libcurlè¯·æ±‚
+    curl_easy_setopt(curl, CURLOPT_URL, url);
+    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_image_data);
+    curl_easy_setopt(curl, CURLOPT_WRITEDATA, file);
+    
+    // å‘é€è¯·æ±‚å¹¶æ¥æ”¶å“åº”
+    CURLcode res = curl_easy_perform(curl);
+    if (res != CURLE_OK) {
+        fprintf(stderr, "Failed to download image: %s\n", curl_easy_strerror(res));
+        return 1;
+    }
+    
+    // å…³é—­æ–‡ä»¶
+    fclose(file);
+    
+    // æ¸…ç†å’Œé‡Šæ”¾èµ„æº
+    curl_easy_cleanup(curl);
+    curl_global_cleanup();
+    
+    // ä½¿ç”¨å›¾å½¢åº“åŠ è½½å’Œæ˜¾ç¤ºå›¾åƒ
+    SDL_Init(SDL_INIT_VIDEO);
+    SDL_Window* window = SDL_CreateWindow("Image Display", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 800, 600, 0);
+    SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, 0);
+    SDL_Surface* image = SDL_LoadBMP("image.jpg");
+    SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, image);
+    SDL_RenderCopy(renderer, texture, NULL, NULL);
+    SDL_RenderPresent(renderer);
+    
+    // ç­‰å¾…ç”¨æˆ·é€€å‡ºç¨‹åº
+    SDL_Event event;
+    while (SDL_WaitEvent(&event)) {
+        if (event.type == SDL_QUIT) {
+            break;
+        }
+    }
+    
+    // æ¸…ç†å’Œé‡Šæ”¾èµ„æº
+    SDL_DestroyTexture(texture);
+    SDL_FreeSurface(image);
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(window);
+    SDL_Quit();
+    
+    return 0;
+}
+```
+### C++
+```cpp
+#include <iostream>
+#include <fstream>
+#include <curl/curl.h>
+#include <opencv2/opencv.hpp>
+
+size_t write_image_data(void* ptr, size_t size, size_t nmemb, FILE* stream) {
+    return fwrite(ptr, size, nmemb, stream);
+}
+
+int main() {
+    // åˆå§‹åŒ–libcurl
+    curl_global_init(CURL_GLOBAL_DEFAULT);
+    CURL* curl = curl_easy_init();
+    if (!curl) {
+        std::cerr << "Failed to initialize libcurl" << std::endl;
+        return 1;
+    }
+    
+    // è®¾ç½®è¦ä¸‹è½½çš„å›¾ç‰‡URL
+    const char* url = "https://www.hapuren.luoyekj.cn/api/?id=2";
+    
+    // æ‰“å¼€æ–‡ä»¶ä»¥å†™å…¥å›¾ç‰‡æ•°æ®
+    FILE* file = fopen("image.jpg", "wb");
+    if (!file) {
+        std::cerr << "Failed to open file" << std::endl;
+        return 1;
+    }
+    
+    // é…ç½®libcurlè¯·æ±‚
+    curl_easy_setopt(curl, CURLOPT_URL, url);
+    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_image_data);
+    curl_easy_setopt(curl, CURLOPT_WRITEDATA, file);
+    
+    // å‘é€è¯·æ±‚å¹¶æ¥æ”¶å“åº”
+    CURLcode res = curl_easy_perform(curl);
+    if (res != CURLE_OK) {
+        std::cerr << "Failed to download image: " << curl_easy_strerror(res) << std::endl;
+        return 1;
+    }
+    
+    // å…³é—­æ–‡ä»¶
+    fclose(file);
+    
+    // æ¸…ç†å’Œé‡Šæ”¾èµ„æº
+    curl_easy_cleanup(curl);
+    curl_global_cleanup();
+    
+    // ä½¿ç”¨OpenCVåŠ è½½å’Œæ˜¾ç¤ºå›¾åƒ
+    cv::Mat image = cv::imread("image.jpg");
+    if (image.empty()) {
+        std::cerr << "Failed to load image" << std::endl;
+        return 1;
+    }
+    
+    cv::namedWindow("Image Display", cv::WINDOW_NORMAL);
+    cv::imshow("Image Display", image);
+    cv::waitKey(0);
+    
+    return 0;
+}
+```
+##  æé†’
+* æœ¬æ¥å£å·²å¼€æº
+* æœ¬æ¥å£é€‚ç”¨äºCC BY-NC-ND 4.0 åè®® å’Œ GPåè®®
+* æœ¬æ¥å£æä¾›æ˜¯PHPéšæœºæ•°ï¼Œå¯èƒ½æœ‰é‡å¤ï¼
+* è¯·åˆç†ä½¿ç”¨æ¥å£
