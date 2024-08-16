@@ -5,14 +5,6 @@
 ## 一.接口
 
 `https://api.hapuren.cn/api/?id=1`
-### 提示!
-如果您的设备支持ipv6或用户为ipv6用户可使用:
-
-`https://api6.hapuren.cn/api/6.php?id=1`
-
-原因:我们主域名`api.hapuren.cn`服务器在美国为双通道服务器!
-
-副域名`api6.hapuren.cn`服务器在郑州为单ipv6服务器!
 
 ---
 
