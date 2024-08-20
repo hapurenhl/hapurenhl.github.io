@@ -24,14 +24,14 @@
 </head>
 <body>
 <h1>二次元图片（手机版）</h1>
-<img src="https://www.hapuren.luoyekj.cn/api/?id=1">
+<img src="https://api.hapuren.cn/api/?id=1">
 </body>
 </html>
 ```
 ### PHP
 ```php
 <?php
-echo '<img src="https://www.hapuren.luoyekj.cn/api/?id=1">';
+echo '<img src="https://api.hapuren.cn/api/?id=1">';
 ?>
 ```
 ### PYTHON
@@ -43,7 +43,7 @@ import requests
 from PIL import Image
 from io import BytesIO
 
-response = requests.get('https://www.hapuren.luoyekj.cn/api/?id=1')
+response = requests.get('https://api.hapuren.cn/api/?id=1')
 response = response.content
 
 BytesIOObj = BytesIO()
@@ -87,7 +87,7 @@ public class WebImageDisplay extends JFrame {
     
     public static void main(String[] args) {
         WebImageDisplay imageDisplay = new WebImageDisplay();
-        imageDisplay.displayImage("https://www.hapuren.luoyekj.cn/api/?id=1");
+        imageDisplay.displayImage("https://api.hapuren.cn/api/?id=1");
         imageDisplay.setVisible(true);
     }
 }
@@ -107,7 +107,7 @@ import (
 )
 
 func main() {
-	response, err := http.Get("https://www.hapuren.luoyekj.cn/api/?id=1")
+	response, err := http.Get("https://api.hapuren.cn/api/?id=1")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -151,7 +151,7 @@ int main() {
     }
     
     // 设置要下载的图片URL
-    const char* url = "https://www.hapuren.luoyekj.cn/api/?id=1";
+    const char* url = "https://api.hapuren.cn/api/?id=1";
     
     // 打开文件以写入图片数据
     FILE* file = fopen("image.jpg", "wb");
@@ -207,7 +207,7 @@ int main() {
 }
 ```
 ### C++
-```c++
+```cpp
 #include <iostream>
 #include <fstream>
 #include <curl/curl.h>
@@ -227,7 +227,7 @@ int main() {
     }
     
     // 设置要下载的图片URL
-    const char* url = "https://www.hapuren.luoyekj.cn/api/?id=1";
+    const char* url = "https://api.hapuren.cn/api/?id=1";
     
     // 打开文件以写入图片数据
     FILE* file = fopen("image.jpg", "wb");
