@@ -6,6 +6,7 @@
 ## 现有API文档
 * 二次元图片API接口:[手机版](./docs/api_1.md)
 * 二次元图片API接口:[电脑版](./docs/api_2.md)
+* 哈葡人互联一言API接口:[点我查看]（./docs/api_3.md）
 ## 现有开源
 * API接口源码:[https://github.com/hapurenhl/api-jiekou](https://github.com/hapurenhl/api-jiekou)
 * 网站信息爬虫:[https://github.com/hapuren/webhapuren](https://github.com/hapuren/webhapuren)
