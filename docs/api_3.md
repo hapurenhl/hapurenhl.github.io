@@ -62,7 +62,7 @@ API连接:`https://api.hapuren.cn/ht/`
 
 ### 演示（可刷新查看）
 
-![](https://api.hapuren.cn/ht/)
+![](https://api.hapuren.cn/ht/?type=txt)
 
 ## 致谢
 
