@@ -11,7 +11,7 @@ API连接:`https://api.hapuren.cn/ht/`
 | wj | 见后表 | 是 | 句子类型 | a |
 | type | 见后表 | 是 | 返回格式 | json |
 
-### 句子类型（参数）
+### 句子类型（参数wj）
 
 | 参数 | 说明 |
 | :----: | :----: |
@@ -28,7 +28,7 @@ API连接:`https://api.hapuren.cn/ht/`
 | k | 哲学 |
 | l | 抖机灵 |
 
-### 返回格式
+### 返回格式（参数type）
 
 | 参数 | 说明 |
 | :----: | :----: |
@@ -51,6 +51,18 @@ API连接:`https://api.hapuren.cn/ht/`
 | commit_from  | 提交方式                                                 |
 | created_at   | 添加时间                                                 |
 | length       | 句子长度                                                 |
+
+## 教程
+
+### 链接例句
+
+`https://api.hapuren.cn/ht/`
+
+`https://api.hapuren.cn/ht/?wj=a&type=json`
+
+### 演示（可刷新查看）
+
+![](https://api.hapuren.cn/ht/)
 
 ## 致谢
 
