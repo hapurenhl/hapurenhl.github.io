@@ -60,10 +60,6 @@ API连接:`https://api.hapuren.cn/ht/`
 
 `https://api.hapuren.cn/ht/?wj=a&type=json`
 
-### 演示（可刷新查看）
-
-![](https://api.hapuren.cn/ht/?type=txt)
-
 ## 致谢
 
 感谢`hotokoto.一言`提供的语言包
